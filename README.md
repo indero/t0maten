@@ -1,10 +1,13 @@
-# T0maten - A Helper for doing Daily Pomodoro on the terminal
+# T0maten - A helper for doing daily pomodoro on the terminal
 
-This is a helper for working with Pomodoro. I use this for my everyday work.
+This is a helper for working with pomodoro. I use this for my everyday work.
 
 ## Install
 
 Clone this repo and create a pomodori and a html folder.
+
+    git clone https://github.com/indero/t0maten.git ~/pomodoro
+    mkdir ~/pomodoro/pomodori; mkdir ~/pomodoro/html;
 
 ## Tools
 
@@ -35,7 +38,7 @@ tmux status-line
 **~/.thymerc:**
 
     ...
-    set tmux, true
+    set :tmux, true
     ...
 
 **~/.tmux.conf**
@@ -86,24 +89,24 @@ In your tmux-powerline theme
 
 ### Pandoc
 
-Pandoc is used to generate a HTML Version of the Daily-Pomodoro Files.
+Pandoc is used to generate a HTML version of the daily Pomodoro files.
 
 ## Aliases (bash, zsh, etc)
 
-Example alias with this repo under ~/pomodoro
+Example alias with this repo under ~/pomodoro/
 ```
 alias dailypomo='vi ~/pomodoro/pomodori/$(date +"%F").markdown -c "source ~/pomodoro/lib/vim-template"'
 ```
 
 ## Template
 
-The Alias loads a markdown template for planing your pomodori.
+The alias loads a markdown template for planing your pomodori.
 
-## Dailypomodoro Legend
+## Daily pomodoro legend
 
-* **I** Whole Pomodori use for this
-* **i** Some time of this pomodori used
-* **x** disturbed while pomodoring
+* **I** It took a whole pomodoro use for this
+* **i** Some time of this pomodoro used
+* **x** Disturbed while pomodoring
 
 ### Example
 
@@ -118,9 +121,9 @@ An example day:
 
     # Reality
 
-    * Fix Bug 1337 in project gotham II #Two full pomodori
+    * Fix Bug 1337 in project gotham II # Two full pomodori
     * Cleaned kitchen Ii #One full pomodori and one partial
-    * Fix Bug 1338 in project gotham Ix #One Fill pomodori and one with disturbance
+    * Fix Bug 1338 in project gotham Ix # One Fill pomodori and one with disturbance
 
 ## Markdown to HTML
 
