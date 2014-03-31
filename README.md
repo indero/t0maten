@@ -1,6 +1,10 @@
-# Tomaten - A Helper for doing Daily Pomomdoro on the terminal
+# T0maten - A Helper for doing Daily Pomomdoro on the terminal
 
 This is a helper for working with Pomodoro. I use this for my everyday work.
+
+## Install
+
+Clone this repo and create a pomodori and a html folder.
 
 ## Tools
 
