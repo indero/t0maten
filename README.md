@@ -13,7 +13,7 @@ Thyme is a rubygem and a simple pomodoro timer.
 
     gem install thyme
 
-**~/thymerc:**
+**~/.thymerc:**
 
     option :b, :break, 'start a break' do
       set :timer, 5*60
@@ -32,7 +32,7 @@ Thyme is a rubygem and a simple pomodoro timer.
 If you use TMUX as terminal multiplexer you can add a pomodoro status to your
 tmux status-line
 
-**~/thymerc:**
+**~/.thymerc:**
 
     ...
     set tmux, true
