@@ -1,0 +1,12 @@
+"Lets load the pomodoro daily template
+
+w
+let file_lines = line('$')
+"echo file_lines
+let pomodoro_path = expand('%:p:h')
+let template_path = pomodoro_path . "/../lib/template.markdown"
+if file_lines == 1
+execute "0r " . template_path
+:s/XXXX-XX-XX/\=strftime("%F")/
+w
+endif
