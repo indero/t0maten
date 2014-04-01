@@ -12,14 +12,14 @@ echo "# Overview" > $pomodorodir/html/index.md
 echo "" >> $pomodorodir/html/index.md
 
 # Get the Mont and Year
-for month in $(for day in $(ls $pomodorodir/pomodori/20*); do basename $day .markdown | awk -F- '{print $1"-"$2}'; done | uniq); do
+for month in $(for day in $(ls -r $pomodorodir/pomodori/20*); do basename $day .markdown | awk -F- '{print $1"-"$2}'; done | uniq); do
 
   #Add the month to index.md
   echo "## $month" >> $pomodorodir/html/index.md
   echo "" >> $pomodorodir/html/index.md
 
   # For each day of a month create a Link
-  for dayofmonth in $(ls $pomodorodir/pomodori/${month}*); do
+  for dayofmonth in $(ls -r $pomodorodir/pomodori/${month}*); do
 
     #echo $dayofmonth;
     dayofmonth_basename=$(basename $dayofmonth .markdown)
