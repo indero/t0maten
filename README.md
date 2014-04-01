@@ -94,9 +94,9 @@ Pandoc is used to generate a HTML version of the daily Pomodoro files.
 ## Aliases (bash, zsh, etc)
 
 Example alias with this repo under ~/pomodoro/
-```
-alias dailypomo='vi ~/pomodoro/pomodori/$(date +"%F").markdown -c "source ~/pomodoro/lib/vim-template"'
-```
+
+    alias dailypomo='vi ~/pomodoro/pomodori/$(date +"%F").markdown -c "source ~/pomodoro/lib/vim-template"'
+
 
 ## Template
 
@@ -129,7 +129,7 @@ An example day:
 
 To convert the markdown to HTML I use ```pandoc```.
 
-    pandoc --self-contained -o /tmp/file.html REAMDE.md -c ./css/pandoc.css -c ./css/github2.css
+    pandoc --self-contained -o /tmp/file.html README.md -c ./css/pandoc.css -c ./css/github2.css
 
 To convert your daily pomodoris to HTML you can use following commands:
 
