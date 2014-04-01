@@ -1,6 +1,6 @@
 # T0maten - A helper for doing daily pomodoro on the terminal
 
-This is a helper for working with pomodoro. I use this for my everyday work.
+This is a collection of tools and scripts for working with pomodoro. I use this for my everyday work.
 
 ## Install
 
