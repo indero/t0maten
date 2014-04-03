@@ -97,6 +97,9 @@ Example alias with this repo under ~/pomodoro/
 
     alias dailypomo='vi ~/pomodoro/pomodori/$(date +"%F").markdown -c "source ~/pomodoro/lib/vim-template"'
 
+For displaying the yesterdays pomodori:
+
+    alias yesterpomo='view ~/pomodoro/pomodori/$(date -d " -1 days" +%F).markdown'
 
 ## Template
 
