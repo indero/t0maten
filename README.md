@@ -91,6 +91,8 @@ In your tmux-powerline theme
 
 Pandoc is used to generate a HTML version of the daily Pomodoro files.
 
+For OS X you can download pandoc here: https://code.google.com/p/pandoc/downloads/
+
 ## Aliases (bash, zsh, etc)
 
 Example alias with this repo under ~/pomodoro/
