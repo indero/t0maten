@@ -8,9 +8,12 @@ type pandoc >/dev/null 2>&1 || {
 }
 
 cd "$(dirname "$0")"
-pomodorodir="."
 
-cat > $pomodorodir/html/index.md <<EOT
+POMODORI_DIR=${POMODORI_DIR:-./pomodori}
+HTML_DIR=${HTML_DIR:-./html}
+CSS_DIR=${CSS_DIR:-./css}
+
+cat > ${HTML_DIR}/index.md <<EOT
 ---
 title: t0maten Overview
 ---
@@ -18,16 +21,16 @@ title: t0maten Overview
 EOT
 
 # Get the Mont and Year
-find pomodori -name '*.markdown' -exec basename -s .markdown "{}" \; \
+find ${POMODORI_DIR} -name '*.markdown' -exec basename -s .markdown "{}" \; \
   | cut -d'-' -f1-2 \
   | sort -u \
   | while read -r month; do
 
   #Add the month to index.md
-  echo "## $month\n" >> $pomodorodir/html/index.md
+  echo "## $month\n" >> ${HTML_DIR}/index.md
 
   # For each day of a month create a Link
-  for dayofmonth in $(ls -r $pomodorodir/pomodori/${month}*); do
+  for dayofmonth in $(ls -r ${POMODORI_DIR}/${month}*); do
 
     #echo $dayofmonth;
     dayofmonth_basename=$(basename $dayofmonth .markdown)
@@ -35,21 +38,21 @@ find pomodori -name '*.markdown' -exec basename -s .markdown "{}" \; \
     pandoc \
       --self-contained \
       --metadata="title:Pomodoro ${day}" \
-      -o $pomodorodir/html/${dayofmonth_basename}.html \
-      -c $pomodorodir/css/pandoc.css \
-      -c $pomodorodir/css/github2.css \
+      -o ${HTML_DIR}/${dayofmonth_basename}.html \
+      -c ${CSS_DIR}/pandoc.css \
+      -c ${CSS_DIR}/github2.css \
       $dayofmonth
 
-    echo "* [${dayofmonth_basename}](${dayofmonth_basename}.html)" >> $pomodorodir/html/index.md
+    echo "* [${dayofmonth_basename}](${dayofmonth_basename}.html)" >> ${HTML_DIR}/index.md
 
   done
 
-  echo "" >> $pomodorodir/html/index.md
+  echo "" >> ${HTML_DIR}/index.md
 done
 
 pandoc \
   --self-contained \
-  -o $pomodorodir/html/index.html \
-  -c $pomodorodir/css/pandoc.css \
-  -c $pomodorodir/css/github2.css \
-  $pomodorodir/html/index.md
+  -o ${HTML_DIR}/index.html \
+  -c ${CSS_DIR}/pandoc.css \
+  -c ${CSS_DIR}/github2.css \
+  ${HTML_DIR}/index.md
