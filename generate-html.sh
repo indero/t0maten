@@ -1,5 +1,5 @@
 #!/bin/bash
-#set -x
+set -e -o pipefail
 
 # Requirement
 type pandoc >/dev/null 2>&1 || {
