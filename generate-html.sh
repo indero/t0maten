@@ -20,8 +20,7 @@ find pomodori -name '*.markdown' -exec basename -s .markdown "{}" \; \
   | while read -r month; do
 
   #Add the month to index.md
-  echo "## $month" >> $pomodorodir/html/index.md
-  echo "" >> $pomodorodir/html/index.md
+  echo "## $month\n" >> $pomodorodir/html/index.md
 
   # For each day of a month create a Link
   for dayofmonth in $(ls -r $pomodorodir/pomodori/${month}*); do
