@@ -10,8 +10,12 @@ type pandoc >/dev/null 2>&1 || {
 cd "$(dirname "$0")"
 pomodorodir="."
 
-echo "# Overview" > $pomodorodir/html/index.md
-echo "" >> $pomodorodir/html/index.md
+cat > $pomodorodir/html/index.md <<EOT
+---
+title: t0maten Overview
+---
+
+EOT
 
 # Get the Mont and Year
 find pomodori -name '*.markdown' -exec basename -s .markdown "{}" \; \
@@ -30,6 +34,7 @@ find pomodori -name '*.markdown' -exec basename -s .markdown "{}" \; \
 
     pandoc \
       --self-contained \
+      --metadata="title:Pomodoro ${day}" \
       -o $pomodorodir/html/${dayofmonth_basename}.html \
       -c $pomodorodir/css/pandoc.css \
       -c $pomodorodir/css/github2.css \
