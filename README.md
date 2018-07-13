@@ -96,7 +96,7 @@ In your tmux-powerline theme
 
 Pandoc is used to generate a HTML version of the daily Pomodoro files.
 
-For OS X you can download pandoc here: https://code.google.com/p/pandoc/downloads/
+For OS X you can [download pandoc](https://code.google.com/p/pandoc/downloads/) or install it via `brew install pandoc`.
 
 ## Aliases (bash, zsh, etc)
 
@@ -137,20 +137,12 @@ An example day:
 
 ## Markdown to HTML
 
-To convert the markdown to HTML I use ```pandoc```.
+To convert the markdown to HTML I use `pandoc`.
 
     pandoc --self-contained -o /tmp/file.html README.md -c ./css/pandoc.css -c ./css/github2.css
 
 To convert your daily pomodoris to HTML you can use following commands:
 
-```
-./generate-html.sh
-google-chrome ./html/index.html
-```
+    ./generate-html.sh
+    google-chrome ./html/index.html
 
-##TODO:
-* Mac OS X compatibility
-
----
-
-vim: ft=markdown
