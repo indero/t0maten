@@ -17,7 +17,6 @@ cat > ${HTML_DIR}/index.md <<EOT
 ---
 title: t0maten Overview
 ---
-
 EOT
 
 # Get the Mont and Year
@@ -27,7 +26,7 @@ find ${POMODORI_DIR} -name '*.markdown' -exec basename -s .markdown "{}" \; \
   | while read -r month; do
 
   #Add the month to index.md
-  echo "## $month\n" >> ${HTML_DIR}/index.md
+  echo -e "\\n## $month\\n" >> ${HTML_DIR}/index.md
 
   # For each day of a month create a Link
   for dayofmonth in $(ls -r ${POMODORI_DIR}/${month}*); do
@@ -46,8 +45,6 @@ find ${POMODORI_DIR} -name '*.markdown' -exec basename -s .markdown "{}" \; \
     echo "* [${dayofmonth_basename}](${dayofmonth_basename}.html)" >> ${HTML_DIR}/index.md
 
   done
-
-  echo "" >> ${HTML_DIR}/index.md
 done
 
 pandoc \
