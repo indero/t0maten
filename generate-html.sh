@@ -7,9 +7,8 @@ type pandoc >/dev/null 2>&1 || {
   exit 1
 }
 
-# We need the path of our project
-fullpath=$(python -c 'import os,sys;print os.path.realpath(sys.argv[1])' $0)
-pomodorodir=$(dirname $fullpath)
+cd "$(dirname "$0")"
+pomodorodir="."
 
 echo "# Overview" > $pomodorodir/html/index.md
 echo "" >> $pomodorodir/html/index.md
