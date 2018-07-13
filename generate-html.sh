@@ -2,7 +2,10 @@
 #set -x
 
 # Requirement
-type pandoc >/dev/null 2>&1 || { echo >&2 "I require pandoc but it's not installed.  Aborting."; exit 1; }
+type pandoc >/dev/null 2>&1 || {
+  echo >&2 "I require pandoc but it's not installed. Aborting."
+  exit 1
+}
 
 # We need the path of our project
 fullpath=$(python -c 'import os,sys;print os.path.realpath(sys.argv[1])' $0)
@@ -24,7 +27,11 @@ for month in $(for day in $(ls -r $pomodorodir/pomodori/20*); do basename $day .
     #echo $dayofmonth;
     dayofmonth_basename=$(basename $dayofmonth .markdown)
 
-    pandoc --self-contained -o $pomodorodir/html/${dayofmonth_basename}.html $dayofmonth -c $pomodorodir/css/pandoc.css -c $pomodorodir/css/github2.css
+    pandoc \
+      --self-contained \
+      -o $pomodorodir/html/${dayofmonth_basename}.html $dayofmonth \
+      -c $pomodorodir/css/pandoc.css \
+      -c $pomodorodir/css/github2.css
 
     echo "* [${dayofmonth_basename}](${dayofmonth_basename}.html)" >> $pomodorodir/html/index.md
 
@@ -33,4 +40,8 @@ for month in $(for day in $(ls -r $pomodorodir/pomodori/20*); do basename $day .
   echo "" >> $pomodorodir/html/index.md
 done
 
-pandoc --self-contained -o $pomodorodir/html/index.html $pomodorodir/html/index.md -c $pomodorodir/css/pandoc.css -c $pomodorodir/css/github2.css
+pandoc \
+  --self-contained \
+  -o $pomodorodir/html/index.html $pomodorodir/html/index.md \
+  -c $pomodorodir/css/pandoc.css \
+  -c $pomodorodir/css/github2.css
