@@ -30,9 +30,10 @@ find pomodori -name '*.markdown' -exec basename -s .markdown "{}" \; \
 
     pandoc \
       --self-contained \
-      -o $pomodorodir/html/${dayofmonth_basename}.html $dayofmonth \
+      -o $pomodorodir/html/${dayofmonth_basename}.html \
       -c $pomodorodir/css/pandoc.css \
-      -c $pomodorodir/css/github2.css
+      -c $pomodorodir/css/github2.css \
+      $dayofmonth
 
     echo "* [${dayofmonth_basename}](${dayofmonth_basename}.html)" >> $pomodorodir/html/index.md
 
@@ -43,6 +44,7 @@ done
 
 pandoc \
   --self-contained \
-  -o $pomodorodir/html/index.html $pomodorodir/html/index.md \
+  -o $pomodorodir/html/index.html \
   -c $pomodorodir/css/pandoc.css \
-  -c $pomodorodir/css/github2.css
+  -c $pomodorodir/css/github2.css \
+  $pomodorodir/html/index.md
