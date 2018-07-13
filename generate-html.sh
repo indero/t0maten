@@ -14,7 +14,10 @@ echo "# Overview" > $pomodorodir/html/index.md
 echo "" >> $pomodorodir/html/index.md
 
 # Get the Mont and Year
-for month in $(for day in $(ls -r $pomodorodir/pomodori/20*); do basename $day .markdown | awk -F- '{print $1"-"$2}'; done | uniq); do
+find pomodori -name '*.markdown' -exec basename -s .markdown "{}" \; \
+  | cut -d'-' -f1-2 \
+  | sort -u \
+  | while read -r month; do
 
   #Add the month to index.md
   echo "## $month" >> $pomodorodir/html/index.md
