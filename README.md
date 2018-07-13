@@ -144,7 +144,7 @@ To convert the markdown to HTML I use ```pandoc```.
 To convert your daily pomodoris to HTML you can use following commands:
 
 ```
-bash generate-html.sh
+./generate-html.sh
 google-chrome ./html/index.html
 ```
 
