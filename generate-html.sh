@@ -29,20 +29,20 @@ find "${POMODORI_DIR}" -name '*.markdown' -exec basename -s .markdown "{}" \; \
   echo -e "\\n## ${month}\\n" >> "${HTML_DIR}/index.md"
 
   # For each day of a month create a Link
-  for dayofmonth in "${POMODORI_DIR}/${month}"*; do
-
-    #echo $dayofmonth;
-    dayofmonth_basename=$(basename "$dayofmonth" .markdown)
+  find "$POMODORI_DIR" -name "${month}*.markdown" \
+    -exec basename -s .markdown "{}" \; \
+    | sort -u \
+    | while read -r day; do
 
     pandoc \
       --self-contained \
       --metadata="title:Pomodoro ${day}" \
-      -o "${HTML_DIR}/${dayofmonth_basename}.html" \
+      -o "${HTML_DIR}/${day}.html" \
       -c "${CSS_DIR}/pandoc.css" \
       -c "${CSS_DIR}/github2.css" \
-      "$dayofmonth"
+      "${POMODORI_DIR}/${day}.markdown"
 
-    echo "* [${dayofmonth_basename}](${dayofmonth_basename}.html)" >> "${HTML_DIR}/index.md"
+    echo "* [${day}](${day}.html)" >> "${HTML_DIR}/index.md"
 
   done
 done
