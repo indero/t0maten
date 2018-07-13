@@ -30,6 +30,11 @@ Thyme is a rubygem and a simple pomodoro timer.
       `notify-send -u critical -i /usr/share/icons/gnome/32x32/status/dialog-warning.png "Thymes Up!"` if seconds_left == 0
     end
 
+Or, to send notifications under MacOS use the following inside the `after` block:
+
+    `osascript -e 'display notification "Thymes Up!" with title "Pomodoro"'` if seconds_left == 0
+
+
 ### tmux
 
 If you use TMUX as terminal multiplexer you can add a pomodoro status to your
